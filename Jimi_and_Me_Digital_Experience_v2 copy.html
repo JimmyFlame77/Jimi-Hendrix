@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE JONATHAN & JIMI DIGITAL EXPERIENCE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #151C28;
+            --text-main: #F4F4F5;
+            --text-muted: #A1A1AA;
+            --accent-blue: #00E5FF;
+            --accent-orange: #FF6B00;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+            font-weight: normal;
+        }
+
+        /* Layout Structure */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 10%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 6rem;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--accent-blue), #ffffff, var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 4.5rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        h2 span {
+            color: var(--accent-orange);
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        /* Image Styling */
+        .image-wrapper {
+            position: relative;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            object-fit: cover;
+        }
+
+        .image-wrapper img:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 40px 80px rgba(0,229,255,0.15);
+        }
+
+        /* Multi-image layouts */
+        .grid-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .grid-images img {
+            height: 100%;
+            min-height: 300px;
+        }
+
+        /* Article Grid */
+        .article-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .article-section .header-text {
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 60px;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .article-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .article-card:hover::before {
+            width: 8px;
+        }
+
+        .article-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .article-category {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-orange);
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .article-card h3 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .article-card p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* Final Slide */
+        .final-slide {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .final-slide h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .final-slide img {
+            max-width: 400px;
+            width: 100%;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .final-slide img:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Utilities */
+        .reverse {
+            direction: rtl;
+        }
+        .reverse > * {
+            direction: ltr;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+            .reverse {
+                direction: ltr;
+            }
+            h1 { font-size: 4rem; }
+            h2 { font-size: 3.5rem; }
+            .section { padding: 60px 5%; }
+            .image-wrapper img { max-height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="section">
+        <div class="container">
+            <div>
+                <h1>THE JONATHAN & JIMI<br>DIGITAL EXPERIENCE</h1>
+                <div class="subtitle">A dynamic, living digital presence.<br>The ultimate multi-media, multi-dimensional story.</div>
+                <p>Welcome to the official digital hub. More than a landing page, this platform is an evolving media property designed to house personal memory, cultural history, and the unfinished spark of creative ambition shared between Jonathan Stathakis and Jimi Hendrix.</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="26b625a9-2148-4da1-a38a-c3d1a4c4eaf8.png" alt="Jimi Hendrix Vintage Profile">
+            </div>
+        </div>
+    </section>
+
+    <!-- The Book Section -->
+    <section class="section" style="background-color: rgba(255,255,255,0.01);">
+        <div class="container reverse">
+            <div>
+                <h2>The <span>Book</span></h2>
+                <p><strong>Jimi and Me</strong> is the cornerstone of the platform. The site will serve as the premier commercial and editorial destination for the memoir, guiding readers into the 18-month friendship and creative collaboration at the heart of the story.</p>
+                <p>The platform will showcase purchasing options, exclusive chapter excerpts, early review quotes, and a detailed exploration of the cultural context surrounding Hendrix's time in Woodstock, Shokan, and New York.</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="124949796.jpg" alt="Jimi and Me Book Cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- The Film & Doc Section -->
+    <section class="section">
+        <div class="container">
+            <div>
+                <h2>The <span>Screen Projects</span></h2>
+                <p>The website is built to grow into a centralized engine for the upcoming feature film and documentary projects. Hendrix originally enlisted Jonathan to help write a dialogue-free, visually ambitious motion picture.</p>
+                <p>We will bring audiences behind the scenes as that unfulfilled cinematic vision finally translates to the screen. Expect exclusive project milestones, teaser trailers, casting news, and deep-dive production journals.</p>
+            </div>
+            <div class="grid-images">
+                <div class="image-wrapper">
+                    <img src="Screenshot 2026-05-29 at 8.28.55 PM.png" alt="Recording Studio">
+                </div>
+                <div class="image-wrapper">
+                    <img src="c629948f-b90d-4713-9492-a1a477a2d341.png" alt="Jimi Hendrix Studio Session">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Event Section -->
+    <section class="section" style="background-color: rgba(255,255,255,0.01);">
+        <div class="container reverse">
+            <div>
+                <h2>The <span>Live Event</span></h2>
+                <p>Merging fine art and rock history, the platform will spotlight an unforgettable live concert event featuring world-renowned artist <strong>Rob Prior</strong>.</p>
+                <p>Prior will perform live on stage, painting a massive, visceral portrait of Hendrix based directly on one of Jonathan's rare personal photographs. The website will handle event ticketing, live-stream access, and post-event galleries of the final masterpiece.</p>
+            </div>
+            <div class="grid-images">
+                <div class="image-wrapper">
+                    <img src="Rob Prior.webp" alt="Rob Prior Artist">
+                </div>
+                <div class="image-wrapper">
+                    <img src="4ee1adcc-8f50-47b2-8b02-5e23b892efc0.png" alt="Jimi Hendrix Live Concert Back">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Engine / Article Ideas -->
+    <section class="section article-section">
+        <div class="header-text">
+            <h2>The <span>Content Engine</span></h2>
+            <p>To ensure continuous engagement and robust SEO growth, the platform will feature a steady stream of high-value editorial content. Here is a preview of the specific articles that will drive traffic and build the story's universe.</p>
+        </div>
+        
+        <div class="article-grid">
+            <!-- Book Articles -->
+            <div class="article-card">
+                <span class="article-category">The Book</span>
+                <h3>18 Months in the Inner Circle: The Genesis of Jimi and Me</h3>
+                <p>Discover how a chance encounter transformed into a profound creative partnership and enduring friendship. This article explores the early days of Jonathan and Jimi's relationship in New York City.</p>
+            </div>
+            <div class="article-card">
+                <span class="article-category">The Book</span>
+                <h3>Beyond the Stage Persona: The Private Jimi Hendrix</h3>
+                <p>While the world saw a wild rock god, Jonathan knew a quiet, visionary artist. Read exclusive excerpts detailing their private conversations and shared dreams away from the spotlight.</p>
+            </div>
+
+            <!-- Film Articles -->
+            <div class="article-card">
+                <span class="article-category">Screen Projects</span>
+                <h3>The Unmade Masterpiece: Hendrix's Cinematic Vision</h3>
+                <p>Before his tragic passing, Hendrix was developing a revolutionary, dialogue-free film driven entirely by music and visuals. Learn about the radical concept that Jonathan was hired to help script.</p>
+            </div>
+            <div class="article-card">
+                <span class="article-category">Screen Projects</span>
+                <h3>From Memoir to Motion Picture: Adapting The Story</h3>
+                <p>Translating a deeply personal memoir into a feature documentary requires delicate care and unseen archival footage. Follow the filmmakers' journey as they bring this legendary untold story to the screen.</p>
+            </div>
+
+            <!-- Event Articles -->
+            <div class="article-card">
+                <span class="article-category">Live Event</span>
+                <h3>Capturing Lightning: The Photo Behind the Portrait</h3>
+                <p>Every great painting starts with a spark. Explore the history and context of the rare, unseen photograph taken by Jonathan that inspired Rob Prior's upcoming live performance piece.</p>
+            </div>
+            <div class="article-card">
+                <span class="article-category">Live Event</span>
+                <h3>Paint and Feedback: Rob Prior's Live Art Tribute</h3>
+                <p>Renowned artist Rob Prior will paint a massive, dynamic portrait of Hendrix live on stage during a tribute concert. Discover how he channels the energy of Hendrix's music directly onto the canvas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Logo Slide -->
+    <section class="section final-slide">
+        <h3>Strategy Provided By</h3>
+        <img src="Screenshot 2026-06-12 at 9.49.22 AM.png" alt="Proxy Marketing Logo">
+    </section>
+
+</body>
+</html>
